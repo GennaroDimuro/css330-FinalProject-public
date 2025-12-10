@@ -97,3 +97,10 @@
     padding: 30px 100px;
     background: #24252a;
 }
+
+.main-nav {
+    font-weight: 500;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+}
