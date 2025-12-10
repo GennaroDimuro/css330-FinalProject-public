@@ -50,6 +50,8 @@ function createJobCard(job) {
 function isAdmin() {
     if (currentGoogleId === ADMIN_GOOGLE_ID) {
         const navList = document.getElementById("navList");
+        if (!navList) return;
+
         const li = document.createElement("li");
         li.innerHTML = `<a class="admin-link" href="/BetterBlock/admin.html">Administration</a>`;
         navList.appendChild(li);
@@ -107,11 +109,12 @@ window.onload = function() {
     isAdmin();
 
     const container = document.getElementById("jobsContainer");
-    jobs.forEach(job => {
-        const card = createJobCard(job);
-        container.appendChild(card);
-    });
-
+    if (container) {
+        jobs.forEach(job => {
+            const card = createJobCard(job);
+            container.appendChild(card);
+        });
+    }
 
     addTask('Develop API', 'TechCorp', 'Low', '2025-12-15');
     addTask('Design UI', 'Designify', 'Medium', '2025-12-20');

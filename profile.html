@@ -16,17 +16,19 @@
                 <a href="jobs.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Home </a>
                 <table class="table is-fullwidth">
                     <thead>
-                        <th class="control">
-                            <button id="removeAllTasks" onclick="selectAll()">
-                                <span class="icon">
-                                    <i id="checkMark" class="fa-solid fa-square-check"></i>
-                                </span>
-                            </button>
-                        </th>
-                        <th>Task</th>
-                        <th>Company</th>
-                        <th>Priority</th>
-                        <th>Due date</th>
+                        <tr>
+                            <th class="control">
+                                <button id="removeAllTasks" onclick="selectAll()">
+                                    <span class="icon">
+                                        <i id="checkMark" class="fa-solid fa-square-check"></i>
+                                    </span>
+                                </button>
+                            </th>
+                            <th>Task</th>
+                            <th>Company</th>
+                            <th>Priority</th>
+                            <th>Due date</th>
+                        </tr>
                     </thead>
                     <tbody id="taskList"></tbody>
                 </table>
