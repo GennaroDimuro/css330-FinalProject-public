@@ -160,4 +160,5 @@ header.navigation .nav-links ul li .logout-btn:hover {
     position: relative;
     margin-top: 80px;
     padding: 20px 100px;
+    z-index: 10;
 }
