@@ -322,7 +322,7 @@ header.navigation .nav-links ul li a.admin-link:hover {
 #adminsContainer {
     display: flex;
     justify-content: center;
-    padding: 40px 100px;
+    padding: 0px 100px 40px 100px;
 }
 
 .admin-card {
