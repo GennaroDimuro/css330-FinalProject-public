@@ -315,7 +315,7 @@ header.navigation .nav-links ul li a.admin-link:hover {
 
 .admins-page {
     display: flex;
-    min-height: 90vh;
+    min-height: 100vh;
     background: #f0f2f5;
 }
 
