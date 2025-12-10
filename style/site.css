@@ -116,7 +116,7 @@ header.navigation .nav-links ul li {
 
 header.navigation .logout-btn {
     padding: 9px 25px;
-    background: linear-gradient(90deg, #0020bd, #2032c1);
+    background: linear-gradient(90deg, #0020bd, #5c69cb);
     border: none;
     color: #fff !important;
     border-radius: 50px;
@@ -125,5 +125,5 @@ header.navigation .logout-btn {
 }
 
 .logout-btn:hover {
-    background: linear-gradient(90deg, #2032c1, #0020bd);
+    background: linear-gradient(90deg, #5e6cd8, #0020bd);
 }
