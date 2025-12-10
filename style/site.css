@@ -155,10 +155,3 @@ header.navigation .nav-links ul li .logout-btn:hover {
     background-color: rgba(56, 172, 180, 0.8);
     color: #edf0f1 !important;
 }
-
-.section-jobs {
-    position: relative;
-    margin-top: 80px;
-    padding: 20px 100px;
-    z-index: 10;
-}
