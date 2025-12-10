@@ -27,6 +27,7 @@
 
 .logo {
     color: #fff;
+    cursor: pointer;
     font-size: 2rem;
     user-select: none;
 }
@@ -100,6 +101,9 @@
 
 header.navigation .nav-logo {
     cursor: pointer;
+    color: #fff;
+    font-size: 2rem;
+    user-select: none;
     margin-right: auto;
 }
 
