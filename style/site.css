@@ -314,10 +314,9 @@ header.navigation .nav-links ul li a.admin-link:hover {
 /* Admin Page */
 
 #adminsContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
-    gap: 20px;
-    padding: 20px 100px;
+    display: flex;
+    justify-content: center;
+    padding: 40px 100px;
 }
 
 .admin-card {
@@ -337,16 +336,16 @@ header.navigation .nav-links ul li a.admin-link:hover {
 }
 
 .admin-title {
-    font-size: 1.3em;
+    font-size: 1.2em;
     color: #162938;
     margin: 0;
 }
 
-.form-group {
+.admin-body .form-group {
     margin-bottom: 15px;
 }
 
-.form-group label {
+.admin-body label {
     font-size: 0.9em;
     color: #555;
     display: block;
