@@ -95,7 +95,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 30px 100px;
+    padding: 20px 100px;
     background: #24252a;
 }
 
@@ -121,6 +121,23 @@ header.navigation .nav-links {
 header.navigation .nav-links ul li {
     display: inline-block;
     padding: 0px 20px;
+}
+
+header.navigation .nav-links ul li a.main-nav::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    bottom: -6px;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+}
+
+header.navigation .nav-links ul li a.main-nav::after:hover {
+    transform: scaleX(1);
 }
 
 header.navigation .nav-links ul li .logout-btn {
