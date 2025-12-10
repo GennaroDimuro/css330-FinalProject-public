@@ -14,7 +14,7 @@
         <main class="container profile-page">
             <section class="left">
                 <a href="jobs.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Home </a>
-                <table class="table is-fullwidth" id="taskList">
+                <table class="table is-fullwidth">
                     <thead>
                         <th class="control">
                             <button id="removeAllTasks" onclick="selectAll()">
@@ -28,9 +28,7 @@
                         <th>Priority</th>
                         <th>Due date</th>
                     </thead>
-                    <tbody>
-
-                    </tbody>
+                    <tbody id="taskList"></tbody>
                 </table>
                 <button class="delete-btn" onclick="deleteSelected()">Delete</button>
             </section>
