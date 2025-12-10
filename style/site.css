@@ -114,10 +114,6 @@ header.navigation .nav-links ul li a.main-nav {
     text-decoration: none !important;
 }
 
-header.navigation .nav-links {
-    list-style: none;
-}
-
 header.navigation .nav-links ul li {
     display: inline-block;
     padding: 0px 20px;
