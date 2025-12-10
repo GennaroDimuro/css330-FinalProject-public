@@ -320,13 +320,13 @@ header.navigation .nav-links ul li a.admin-link:hover {
 }
 
 .admin-card {
-    border: 1px solid #ddd;
-    background: #fff;
+    background: transparent;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    width: 100%;
+    min-width: 800px;
 }
 
 .admin-header {
@@ -366,6 +366,59 @@ header.navigation .nav-links ul li a.admin-link:hover {
 }
 
 .admin-footer {
+    margin-top: 15px;
+    text-align: right;
+}
+
+#datesContainer {
+    display: flex;
+    justify-content: center;
+    padding: 40px 100px;
+}
+
+.date-card {
+    border: 1px solid #ddd;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+.date-header {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.date-title {
+    font-size: 1.2em;
+    color: #162938;
+    margin: 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 0.9em;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    font-size: 0.9em;
+    color: #333;
+}
+
+.date-footer {
     margin-top: 15px;
     text-align: right;
 }
