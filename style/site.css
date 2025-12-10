@@ -103,9 +103,9 @@
 }
 
 header.navigation .nav-logo {
-    cursor: pointer;
-    color: #fff;
-    align-items: center;
+    user-select: none;
+    font-size: 2em;
+    color: #edf0f1 !important;
     user-select: none;
     margin-right: auto;
 }
@@ -130,7 +130,7 @@ header.navigation .nav-links ul li a.main-nav::after {
     left: 0;
     bottom: -7px;
     height: 3px;
-    background: #edf0f1;
+    background: #edf0f1 !important;
     border-radius: 5px;
     transform-origin: left;
     transform: scaleX(0);
