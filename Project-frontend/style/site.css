@@ -1,0 +1,89 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../files/background.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    z-index: 99;
+}
+
+.logo {
+    color: #fff;
+    font-size: 2rem;
+    user-select: none;
+}
+
+.login-container {
+    position: relative;
+    width: 400px;
+    height: 440px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-box-login {
+    width: 100%;
+    padding: 40px;
+    text-align: center;
+}
+
+.intro {
+    color: #fff;
+    font-size: 2rem;
+    user-select: none;
+    text-transform: uppercase;
+}
+
+.google-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 220px;
+    padding: 10px 14px;
+    font-size: 15px;
+    background: white;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.google-btn img {
+    width: 22px;
+    height: 22px;
+    margin-left: 10px;
+}
+
+.google-btn:hover {
+    background: #ebe9e9;
+}
