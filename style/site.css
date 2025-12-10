@@ -315,6 +315,7 @@ header.navigation .nav-links ul li a.admin-link:hover {
 
 .admins-page {
     display: flex;
+    min-height: 90vh;
     background: #f0f2f5;
 }
 
@@ -390,7 +391,7 @@ header.navigation .nav-links ul li a.admin-link:hover {
     padding: 20px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     width: 100%;
-    min-width: 200px;
+    min-width: 300px;
 }
 
 .date-header {
