@@ -96,7 +96,7 @@
     justify-content: flex-end;
     align-items: center;
     padding: 20px 100px;
-    background: #24252a;
+    background: #162938;
 }
 
 header.navigation .nav-logo {
@@ -117,7 +117,7 @@ header.navigation .nav-links ul li a.main-nav {
 
 header.navigation .nav-links ul li {
     display: inline-block;
-    padding: 0px 20px;
+    padding: 0px 40px;
 }
 
 header.navigation .nav-links ul li a.main-nav::after {
@@ -140,7 +140,7 @@ header.navigation .nav-links ul li a.main-nav:hover::after {
 
 header.navigation .nav-links ul li .logout-btn {
     padding: 9px 25px;
-    background: linear-gradient(90deg, #0020bd, #5c69cb);
+    background-color: rgba(0, 136, 169, 1);
     border: none;
     color: #fff !important;
     border-radius: 50px;
@@ -149,5 +149,5 @@ header.navigation .nav-links ul li .logout-btn {
 }
 
 header.navigation .nav-links ul li .logout-btn:hover {
-    background: linear-gradient(90deg, #5e6cd8, #0020bd);
+    background-color: rgba(0, 136, 169, 0.8);
 }
