@@ -142,14 +142,15 @@ header.navigation .nav-links ul li a.main-nav:hover::after {
 
 header.navigation .nav-links ul li .logout-btn {
     padding: 9px 25px;
-    background-color: rgba(0, 136, 169, 1);
+    background-color: #00d9dd;
     border: none;
-    color: #fff !important;
+    font-weight: 500;
+    color: #47898c !important;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
 
 header.navigation .nav-links ul li .logout-btn:hover {
-    background-color: rgba(0, 136, 169, 0.8);
+    background-color: rgba(41, 207, 193, 0.8);
 }
