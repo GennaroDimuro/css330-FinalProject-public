@@ -104,3 +104,25 @@
     color: #edf0f1 !important;
     text-decoration: none !important;
 }
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.logout-btn {
+    padding: 9px 25px;
+    background-color: linear-gradient(90deg, #0020bd, #2032c1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.logout-btn:hover {
+    background-color: linear-gradient(90deg, #2032c1, #0020bd);
+}
