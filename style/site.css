@@ -348,6 +348,12 @@ header.navigation .nav-links ul li a.admin-link:hover {
     min-height: 100vh;
 }
 
+.admin-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #adminsContainer {
     display: flex;
     justify-content: center;
@@ -501,7 +507,7 @@ header.navigation .nav-links ul li a.admin-link:hover {
   padding: 4px 8px;
   border: 1px solid #ddd;
   font-size: 0.9em;
-  color: #333;
+  color: #555;
 }
 
 .buttons .button {
