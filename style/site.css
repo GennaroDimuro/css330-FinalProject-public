@@ -469,6 +469,10 @@ header.navigation .nav-links ul li a.admin-link:hover {
     padding: 50px 100px 20px 100px;
 }
 
+.tasks-head-title {
+    margin-bottom: 20px;
+}
+
 .task-card {
   border: 1px solid #ddd;
   background: #fff;
