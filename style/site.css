@@ -570,15 +570,18 @@ header.navigation .nav-links ul li a.admin-link:hover {
   color: #333;
 }
 
-.delete-btn {
+.delete-user-btn {
   background: none;
-  border: none;
-  font-size: 1.5em;
-  color: #c00;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #444;
+  padding: 4px 10px;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-.delete-btn:hover {
-  color: #900;
+.delete-user-btn:hover {
+  background: #f5f5f5; 
+  color: #222;          
 }
