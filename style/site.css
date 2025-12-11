@@ -520,6 +520,11 @@ header.navigation .nav-links ul li a.admin-link:hover {
 
 /* Users Management Page */
 
+.users-page {
+  min-height: 100vh;
+  padding: 30px 100px;
+}
+
 #usersContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));

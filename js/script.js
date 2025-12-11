@@ -120,7 +120,7 @@ function createUserCard(user) {
         <img src="${user.photo}" alt="${user.name}" class="user-photo">
         <h3 class="user-name">${user.name}</h3>
       </div>
-      <button class="delete-user-btn" title="Delete User">&times;</button>
+      <button class="delete-user-btn" title="Delete User"><i class="fa-solid fa-xmark"></i></button>
     </div>
     <div class="user-body">
       <p><strong>Email:</strong> ${user.email}</p>
