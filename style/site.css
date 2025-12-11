@@ -352,6 +352,7 @@ header.navigation .nav-links ul li a.admin-link:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0px 20px 0px 10px;
 }
 
 #adminsContainer {
