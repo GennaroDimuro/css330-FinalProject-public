@@ -259,8 +259,7 @@ header.navigation .nav-links ul li a.admin-link:hover {
 
 .profile-page {
     display: flex;
-    min-height: 100vh;
-    background: #f0f2f5;
+    min-height: 100vh;;
 }
 
 .left {
@@ -347,7 +346,6 @@ header.navigation .nav-links ul li a.admin-link:hover {
 .admins-page {
     display: flex;
     min-height: 100vh;
-    background: #f0f2f5;
 }
 
 #adminsContainer {
