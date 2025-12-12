@@ -184,6 +184,7 @@ function addCardTask(task) {
         </span>
         <span class="task-date">Date: ${task.date}</span>
         <span class="task-time">Time: ${task.time}</span>
+    </div>
 
     <div class="buttons">
         <button type="submit" class="button is-warning is-outlined">
