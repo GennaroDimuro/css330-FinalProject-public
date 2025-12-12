@@ -178,8 +178,10 @@ function addCardTask(task) {
 
         const taskContainer = document.getElementById("tasksContainer");
         if (taskContainer.children.length === 0) {
-            taskContainer.innerHTML =
-                `<p class="no-tasks-message">No tasks available. Please add a new task.</p>`;
+            taskContainer.innerHTML =`
+                <p id="no-tasks-message" class="has-text-centered mt-5 subtitle is-5">
+                    No tasks assigned yet
+                </p>`;
         }
     });
 
