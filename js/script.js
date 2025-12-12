@@ -214,7 +214,7 @@ async function Task_addition_db(title, issuedBy, location, salary, voluntary, de
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
                 title,
-                issuedBy,
+                issued,
                 location,
                 salary,
                 voluntary,
