@@ -136,14 +136,8 @@ function addTask() {
     const card = addCardTask(task);
     const parent = document.getElementById("tasksContainer");
 
-    if (parent) {
-        if (parent.children.length === 0) {
-            parent.innerHTML = `
-                <p id="no-tasks-message" class="has-text-centered mt-5 subtitle is-5">
-                    No tasks assigned yet
-                </p>`;
-        }
-    }
+    const msg = document.getElementById("no-tasks-message");
+    if (msg) msg.remove();
 
     parent.appendChild(card);
 
@@ -336,6 +330,17 @@ function loginWithGoogle() {
 window.onload = function() {
     isAdmin();
     fetchUsers();
+
+    const taskContainer = document.getElementById("tasksContainer");
+
+    if (taskContainer) {
+        if (taskContainer.children.length === 0) {
+            taskContainer.innerHTML = `
+                <p id="no-tasks-message" class="has-text-centered mt-5 subtitle is-5">
+                    No tasks assigned yet
+                </p>`;
+        }
+    }
 
     const container = document.getElementById("jobsContainer");
     if (container) {
