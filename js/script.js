@@ -334,6 +334,7 @@ function loginWithGoogle() {
 
 window.onload = function() {
     isAdmin();
+    fetchUsers();
 
     const taskContainer = document.getElementById("tasksContainer");
 
@@ -351,14 +352,6 @@ window.onload = function() {
         jobs.forEach(job => {
             const card = createJobCard(job);
             container.appendChild(card);
-        });
-    }
-
-    const UserCont = document.getElementById("usersContainer");
-    if (UserCont) {
-        users.forEach(user => {
-            const card = createUserCard(user);
-            UserCont.appendChild(card);
         });
     }
 
