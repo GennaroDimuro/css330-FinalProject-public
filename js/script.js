@@ -217,6 +217,35 @@ function addCardTask(task) {
   return card;
 }
 
+async function fetchUsers() {
+    BASE_URL = "https://css330-finalproject.onrender.com/google";
+    try {
+        const response = await fetch(BASE_URL);
+        if (response.ok) {
+            const data = await response.json();
+
+            const users = data.users || [];
+            const container = document.getElementById('usersContainer');
+            if (!container) return;
+
+
+            users.forEach(user => {
+            const card = createUserCard(user);
+            container.appendChild(card);
+            });
+
+
+            return data;
+        } else {
+            console.error("Failed to fetch users");
+            return { users: [] };
+        }
+    } catch (err) {
+        console.error('Error fetching users:', err);
+        return { users: [] };
+    }
+}
+
 function createUserCard(user) {
   const card = document.createElement("div");
   card.className = "user-card";
