@@ -21,19 +21,47 @@ const ADMIN_GOOGLE_ID = "1234567890abcdef";
 
 const currentGoogleId = "1234567890abcdef";
 
-function createJobCard(job) {
+async function fetchTasks() {
+    const BASE_URL = "https://css330-finalproject.onrender.com/tasksinfo";
+    try {
+        const response = await fetch(BASE_URL);
+        if (response.ok) {
+            const data = await response.json();
+
+            const tasks = data.tasks || [];
+            const container = document.getElementById('jobsContainer');
+            if (!container) return;
+
+
+            tasks.forEach(task => {
+            const card = createJobCard(task);
+            container.appendChild(card);
+            });
+
+            return data;
+        } else {
+            console.error("Failed to fetch tasks");
+            return { tasks: [] };
+        }
+    } catch (err) {
+        console.error('Error fetching tasks:', err);
+        return { tasks: [] };
+    }
+}
+
+function createJobCard(task) {
     const card = document.createElement("div");
     card.className = "job-card";
 
     card.innerHTML = `
         <div class="job-header">
-            <h3 class="job-title">${job.title}</h3>
-            <span class="job-company">${job.company}</span>
+            <h3 class="job-title">${task.title}</h3>
+            <span class="job-company">${task.issued}</span>
         </div>
         <div class="job-body">
-            <p><strong>Priority:</strong> ${job.priority}</p>
-            <p><strong>Due Date:</strong> ${job.dueDate}</p>
-            <p><strong>Description:</strong> ${job.description}</p>
+            <p><strong>Location:</strong> ${task.location}</p>
+            <p><strong>Due Date:</strong> ${task.deadline}</p>
+            <p><strong>Description:</strong> ${task.description}</p>
         </div>
         <div class="job-footer">
             <button class="apply-btn">Register</button>
