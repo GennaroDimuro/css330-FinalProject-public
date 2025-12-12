@@ -52,7 +52,7 @@ function createJobCard(task) {
     `;
 
     card.querySelector(".apply-btn").addEventListener("click", () => {
-        alert(`You registered for the job: ${job.title}`);
+        alert(`You registered for the job: ${task.title}`);
     });
 
     return card;
