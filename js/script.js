@@ -253,15 +253,14 @@ function createUserCard(user) {
   card.innerHTML = `
     <div class="user-header">
       <div class="user-profile">
-        <img src="${user.photo}" alt="${user.name}" class="user-photo">
+        <img src="${user.profile_pic}" alt="${user.name}" class="user-photo">
         <h3 class="user-name">${user.name}</h3>
       </div>
       <button class="delete-user-btn" title="Delete User"><i class="fa-solid fa-xmark"></i></button>
     </div>
     <div class="user-body">
       <p><strong>Email:</strong> ${user.email}</p>
-      <p><strong>Google ID:</strong> ${user.googleId}</p>
-      <p><strong>Description:</strong> ${user.description}</p>
+      <p><strong>Google ID:</strong> ${user.google_id}</p>
     </div>
   `;
 
