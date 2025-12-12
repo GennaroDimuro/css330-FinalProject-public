@@ -290,7 +290,9 @@ function createUserCard(user) {
 
     const userIdToDelete = user.id;
     deleteUserApi(userIdToDelete);
-    card.remove();
+    if (card) {
+        card.remove();
+    }
 
     const usersContainer = document.getElementById("usersContainer");
     const msgContainer = document.getElementById("msg-box");
