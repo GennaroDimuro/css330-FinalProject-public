@@ -218,7 +218,7 @@ function addCardTask(task) {
 }
 
 async function fetchUsers() {
-    BASE_URL = "https://css330-finalproject.onrender.com/google";
+    const BASE_URL = "https://css330-finalproject.onrender.com/google";
     try {
         const response = await fetch(BASE_URL);
         if (response.ok) {
