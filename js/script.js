@@ -205,7 +205,7 @@ function addCardTask(task) {
   return card;
 }
 
-async function Task_addition_db(title, issuedBy, location, salary, voluntary, description, deadline) {
+async function Task_addition_db(title, issued, location, salary, voluntary, description, deadline) {
     const BASE_URL = "https://css330-finalproject.onrender.com/tasks";
     
     try {
