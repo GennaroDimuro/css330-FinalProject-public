@@ -16,6 +16,7 @@ const jobs = [
         description: "Design clean interfaces using Bulma."
     }
 ];
+
 const ADMIN_GOOGLE_ID = "1234567890abcdef";
 
 const currentGoogleId = "1234567890abcdef";
@@ -54,11 +55,15 @@ function addTask() {
     let TaskSalary = document.querySelector("#salary").value;
     let TaskAmount = document.querySelector("#amount").value;
 
+    let FullSalary = TaskSalary + TaskAmount;
+
     let TaskVoluntary = document.querySelector("#voluntary").value;
     let TaskDescription = document.querySelector("#description").value;
 
     let TaskDate = document.querySelector("#date").value;
     let TaskTime = document.querySelector("#time").value;
+
+    let Taskdeadline = TaskDate + " " + TaskTime;
 
     let alertT = document.querySelector("#alertEmptyTask");
     let alertI = document.querySelector("#alertEmptyIssuedBy");
@@ -125,7 +130,7 @@ function addTask() {
         title: Tasktitle,
         issuedBy: TaskIssuedBy,
         location: TaskLocation,
-        salary: TaskSalary + TaskAmount,
+        salary: FullSalary,
         voluntary: TaskVoluntary,
         description: TaskDescription,
         date: TaskDate,
@@ -139,6 +144,7 @@ function addTask() {
     const msg = document.getElementById("no-tasks-message");
     if (msg) msg.remove();
 
+    Task_addition_db(Tasktitle, TaskIssuedBy, TaskLocation, FullSalary, TaskVoluntary, TaskDescription, Taskdeadline);
     parent.appendChild(card);
 
     document.getElementById("adminForm").reset();
@@ -199,6 +205,32 @@ function addCardTask(task) {
   return card;
 }
 
+async function Task_addition_db(title, issuedBy, location, salary, voluntary, description, deadline) {
+    const BASE_URL = "https://css330-finalproject.onrender.com/tasks";
+    
+    try {
+        const response = await fetch(BASE_URL, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                title,
+                issuedBy,
+                location,
+                salary,
+                voluntary,
+                description,
+                deadline
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+    } catch (err) {
+        console.error("Error adding task:", err);
+    }
+}
+
 async function fetchUsers() {
     const BASE_URL = "https://css330-finalproject.onrender.com/google";
     try {
@@ -255,6 +287,7 @@ function createUserCard(user) {
   `;
 
   card.querySelector(".delete-user-btn").addEventListener("click", () => {
+
     card.remove();
     const userIdToDelete = user.id;
     deleteUserApi(userIdToDelete);
