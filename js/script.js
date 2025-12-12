@@ -175,6 +175,14 @@ function addCardTask(task) {
 
     card.querySelector(".delete-task-btn").addEventListener("click", () => {
         card.remove();
+
+        const taskContainer = document.getElementById("tasksContainer");
+        if (taskContainer.children.length === 0) {
+            taskContainer.innerHTML =`
+                <p id="no-tasks-message" class="has-text-centered mt-5 subtitle is-5">
+                    No tasks assigned yet
+                </p>`;
+        }
     });
 
   return card;
