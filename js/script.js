@@ -400,6 +400,7 @@ function loginWithGoogle() {
 window.onload = function() {
     isAdmin();
     fetchUsers();
+    fetchTasks();
 
     const taskContainer = document.getElementById("tasksContainer");
 
