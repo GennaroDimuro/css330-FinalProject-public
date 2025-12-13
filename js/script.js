@@ -79,7 +79,7 @@ function createJobCard(task) {
     return card;
 }
 
-function addTask() {
+async function addTask() {
     let Tasktitle = document.querySelector("#title").value;
     let TaskIssuedBy = document.querySelector("#issuedby").value;
     let TaskLocation = document.querySelector("#location").value;
@@ -158,27 +158,31 @@ function addTask() {
 
     if (!valid) return;
 
-    const task = {
-        title: Tasktitle,
-        issued: TaskIssuedBy,
-        location: TaskLocation,
-        salary: FullSalary,
-        voluntary: TaskVoluntary,
-        description: TaskDescription,
-        deadline: Taskdeadline,
-    };
-    
-    const card = addCardTask(task);
-    const parent = document.getElementById("tasksContainer");
+    try {
+        const createdTask = await Task_addition_db(
+            Tasktitle,
+            TaskIssuedBy,
+            TaskLocation,
+            FullSalary,
+            TaskVoluntary,
+            TaskDescription,
+            Taskdeadline
+        );
 
-    const msg = document.getElementById("no-tasks-message");
-    if (msg) msg.remove();
+        const parent = document.getElementById("tasksContainer");
 
-    Task_addition_db(Tasktitle, TaskIssuedBy, TaskLocation, FullSalary, TaskVoluntary, TaskDescription, Taskdeadline);
-    parent.appendChild(card);
+        const msg = document.getElementById("no-tasks-message");
+        if (msg) msg.remove();
 
-    document.getElementById("adminForm").reset();
-    document.getElementById("dateForm").reset();
+        parent.appendChild(addCardTask(createdTask));
+
+        document.getElementById("adminForm").reset();
+        document.getElementById("dateForm").reset();
+
+    } catch (err) {
+        alert("Error creating task");
+        console.error(err);
+    }
 }
 
 function addCardTask(task) {
@@ -230,28 +234,26 @@ function addCardTask(task) {
 
 async function Task_addition_db(title, issued, location, salary, voluntary, description, deadline) {
     const BASE_URL = "https://css330-finalproject.onrender.com/tasks";
-    
-    try {
-        const response = await fetch(BASE_URL, {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                title,
-                issued,
-                location,
-                salary,
-                voluntary,
-                description,
-                deadline
-            })
-        });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-    } catch (err) {
-        console.error("Error adding task:", err);
+    const response = await fetch(BASE_URL, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            title,
+            issued,
+            location,
+            salary,
+            voluntary,
+            description,
+            deadline
+        })
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to create task");
     }
+
+    return await response.json();
 }
 
 async function deleteTaskApi(taskId) {
