@@ -210,7 +210,11 @@ function addCardTask(task) {
   `;
 
     card.querySelector(".delete-task-btn").addEventListener("click", () => {
-        card.remove();
+        const taskIdToDelete = task.id;
+        deleteTaskApi(taskIdToDelete);
+        if (card) {
+            card.remove();
+        }
 
         const taskContainer = document.getElementById("tasksContainer");
         if (taskContainer.children.length === 0) {
@@ -247,6 +251,26 @@ async function Task_addition_db(title, issued, location, salary, voluntary, desc
         }
     } catch (err) {
         console.error("Error adding task:", err);
+    }
+}
+
+async function deleteTaskApi(taskId) {
+    const url = `https://css330-finalproject.onrender.com/tasks/${taskId}`;
+    try {
+        const response = await fetch(url, {
+            method: 'DELETE',
+            credentials: 'include'
+        });
+
+        if (response.ok) {
+            alert(`Task ${taskId} deleted successfully from database.`);
+        } else {
+            const errorData = await response.json();
+            alert(`Failed to delete task: ${errorData.error}`);
+        }
+    } catch (err) {
+        console.error('Error deleting task:', err);
+        alert('A network error occurred.');
     }
 }
 
