@@ -6,29 +6,48 @@ const currentGoogleId = "1234567890abcdef";
 
 async function fetchTasks() {
     const BASE_URL = "https://css330-finalproject.onrender.com/tasksinfo";
+
     try {
         const response = await fetch(BASE_URL);
-        if (response.ok) {
-            const data = await response.json();
+        if (!response.ok) throw new Error("Fetch failed");
 
-            const tasks = data.tasks || [];
-            const container = document.getElementById('jobsContainer');
-            if (!container) return;
+        const data = await response.json();
+        return data.tasks || [];
 
-
-            tasks.forEach(task => {
-            const card = createJobCard(task);
-            container.appendChild(card);
-            });
-
-            return data;
-        } else {
-            console.error("Failed to fetch tasks");
-            return { tasks: [] };
-        }
     } catch (err) {
-        console.error('Error fetching tasks:', err);
-        return { tasks: [] };
+        console.error("Error fetching tasks:", err);
+        return [];
+    }
+}
+
+async function renderTasks() {
+    const jobsContainer = document.getElementById("jobsContainer");
+    const tasksContainer = document.getElementById("tasksContainer");
+
+    if (!jobsContainer && !tasksContainer) {
+        return;
+    }
+    
+    const tasks = await fetchTasks();
+
+    if (jobsContainer) {
+        tasks.forEach(task => {
+            jobsContainer.appendChild(createJobCard(task));
+        });
+    }
+
+    if (tasksContainer) {
+        if (tasks.length === 0) {
+            tasksContainer.innerHTML = `
+                <p id="no-tasks-message" class="has-text-centered mt-5 subtitle is-5">
+                    No tasks assigned yet
+                </p>`;
+            return;
+        }
+
+        tasks.forEach(task => {
+            tasksContainer.appendChild(addCardTask(task));
+        });
     }
 }
 
@@ -174,15 +193,15 @@ function addCardTask(task) {
   card.innerHTML = `
     <div class="task-info">
         <span class="task-title">Task: ${task.title}</span>
-        <span class="task-issued">Issued by: ${task.issuedBy}</span>
+        <span class="task-issued">Issued by: ${task.issued}</span>
         <span class="task-members">
             Members:
             <select class="members-select">
                 ${membersOptions}
             </select>
         </span>
-        <span class="task-date">Date: ${task.date}</span>
-        <span class="task-time">Time: ${task.time}</span>
+        <span class="task-date">Date: ${task.deadline.slice(0, 10)}</span>
+        <span class="task-time">Time: ${task.deadline.slice(11, 16)}</span>
     </div>
 
     <div class="buttons">
