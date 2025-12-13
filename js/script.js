@@ -158,31 +158,20 @@ async function addTask() {
 
     if (!valid) return;
 
-    try {
-        const createdTask = await Task_addition_db(
-            Tasktitle,
-            TaskIssuedBy,
-            TaskLocation,
-            FullSalary,
-            TaskVoluntary,
-            TaskDescription,
-            Taskdeadline
-        );
+    await Task_addition_db(
+        Tasktitle,
+        TaskIssuedBy,
+        TaskLocation,
+        FullSalary,
+        TaskVoluntary,
+        TaskDescription,
+        Taskdeadline
+    );
 
-        const parent = document.getElementById("tasksContainer");
+    await renderTasks();
 
-        const msg = document.getElementById("no-tasks-message");
-        if (msg) msg.remove();
-
-        parent.appendChild(addCardTask(createdTask));
-
-        document.getElementById("adminForm").reset();
-        document.getElementById("dateForm").reset();
-
-    } catch (err) {
-        alert("Error creating task");
-        console.error(err);
-    }
+    document.getElementById("adminForm").reset();
+    document.getElementById("dateForm").reset();
 }
 
 function addCardTask(task) {
@@ -234,26 +223,28 @@ function addCardTask(task) {
 
 async function Task_addition_db(title, issued, location, salary, voluntary, description, deadline) {
     const BASE_URL = "https://css330-finalproject.onrender.com/tasks";
+    
+    try {
+        const response = await fetch(BASE_URL, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                title,
+                issued,
+                location,
+                salary,
+                voluntary,
+                description,
+                deadline
+            })
+        });
 
-    const response = await fetch(BASE_URL, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-            title,
-            issued,
-            location,
-            salary,
-            voluntary,
-            description,
-            deadline
-        })
-    });
-
-    if (!response.ok) {
-        throw new Error("Failed to create task");
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+    } catch (err) {
+        console.error("Error adding task:", err);
     }
-
-    return await response.json();
 }
 
 async function deleteTaskApi(taskId) {
