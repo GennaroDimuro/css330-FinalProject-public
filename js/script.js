@@ -445,8 +445,11 @@ async function getCurrentUser() {
 
         const data = await res.json();
         if (!data.authenticated) return null;
-
+        
+        console.log("Fetched current user data:", data.user);
         return data.user;
+        
+        
 
     } catch (err) {
         console.error("Error fetching current user:", err);
@@ -475,10 +478,18 @@ function renderUser(user) {
 }
 
 async function isAdmin() {
+<<<<<<< HEAD
     const user = await getCurrentUser();
     console.log("Current user:", user);
 
     if (!user) return;
+=======
+
+    const user = await getCurrentUser(); 
+
+    console.log("Current user:", user);
+    if (!user) {
+>>>>>>> 7b5f85a2153382e6276473412e22c3014a309d09
 
     if (
         user.google_id === ADMIN_GOOGLE_ID_1 ||
