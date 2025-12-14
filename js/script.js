@@ -219,6 +219,11 @@ function addCardTask(task) {
         document.querySelector("#time").value = task.time.slice(0, 5);
 
         document.querySelector("#adminForm").dataset.editingId = task.id;
+
+        const submitBtn = document.querySelector("#submit-task-btn");
+        if (submitBtn) {
+            submitBtn.textContent = "Save";
+        }
     });
 
     card.querySelector(".delete-task-btn").addEventListener("click", () => {
