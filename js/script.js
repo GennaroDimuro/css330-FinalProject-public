@@ -60,11 +60,11 @@ function createJobCard(task) {
     card.innerHTML = `
         <div class="job-header">
             <h3 class="job-title">${task.title}</h3>
-            <span class="job-company">${task.issued}</span>
+            <span class="job-company">${task.organization}</span>
         </div>
         <div class="job-body">
             <p><strong>Location:</strong> ${task.location}</p>
-            <p><strong>Due Date:</strong> ${task.deadline}</p>
+            <p><strong>Date:</strong> ${task.date}</p>
             <p><strong>Description:</strong> ${task.description}</p>
         </div>
         <div class="job-footer">
@@ -81,33 +81,24 @@ function createJobCard(task) {
 
 async function addTask() {
     let Tasktitle = document.querySelector("#title").value;
-    let TaskIssuedBy = document.querySelector("#issuedby").value;
+    let TaskOrganization = document.querySelector("#organization").value;
     let TaskLocation = document.querySelector("#location").value;
-
-    let TaskSalary = document.querySelector("#salary").value;
-    let TaskAmount = document.querySelector("#amount").value;
-
-    let FullSalary = TaskSalary + TaskAmount;
-
     let TaskVoluntary = document.querySelector("#voluntary").value;
+    let TaskAge = document.querySelector("#age").value;
     let TaskDescription = document.querySelector("#description").value;
 
     let TaskDate = document.querySelector("#date").value;
     let TaskTime = document.querySelector("#time").value;
 
-    let Taskdeadline = TaskDate + " " + TaskTime;
-
     let alertT = document.querySelector("#alertEmptyTask");
     let alertO = document.querySelector("#alertEmptyOrganization");
     let alertL = document.querySelector("#alertEmptyLocation");
-    let alertA = document.querySelector("#alertEmptyAge");
     let alertD = document.querySelector("#alertEmptyDate");
     let alertTi = document.querySelector("#alertEmptyTime");
 
     alertT.style.display = "none";
     alertO.style.display = "none";
     alertL.style.display = "none";
-    alertA.style.display = "none";
     alertD.style.display = "none";
     alertTi.style.display = "none";
 
@@ -122,22 +113,22 @@ async function addTask() {
         alertT.style.display = "none";
     }
 
-    if (TaskIssuedBy === "") {
-        alertI.className = "help is-danger";
-        alertI.style.display = "block";
+    if (TaskOrganization === "") {
+        alertO.className = "help is-danger";
+        alertO.style.display = "block";
         valid = false;
     } else {
-        alertI.className = "help";
-        alertI.style.display = "none";
+        alertO.className = "help";
+        alertO.style.display = "none";
     }
 
-    if (TaskVoluntary === "") {
-        alertV.className = "help is-danger";
-        alertV.style.display = "block";
+    if (TaskLocation === "") {
+        alertL.className = "help is-danger";
+        alertL.style.display = "block";
         valid = false;
     } else {
-        alertV.className = "help";
-        alertV.style.display = "none";
+        alertL.className = "help";
+        alertL.style.display = "none";
     }
 
     if (TaskDate === "") {
@@ -160,19 +151,20 @@ async function addTask() {
 
     if (!valid) return;
 
-    await Task_addition_db(
-        Tasktitle,
-        TaskIssuedBy,
-        TaskLocation,
-        FullSalary,
-        TaskVoluntary,
-        TaskDescription,
-        Taskdeadline
-    );
+    let CreatedTask = {
+        title: Tasktitle,
+        organization: TaskOrganization,
+        location: TaskLocation,
+        voluntary: TaskVoluntary,
+        age: TaskAge,
+        description: TaskDescription,
+        date: TaskDate,
+        time: TaskTime,
+    };
 
+    await Task_addition_db(CreatedTask);
     await renderTasks();
 
-    form.reset();
     document.getElementById("adminForm").reset();
     document.getElementById("dateForm").reset();
 }
@@ -184,9 +176,9 @@ function addCardTask(task) {
   card.innerHTML = `
     <div class="task-info">
         <span class="task-title">Task: ${task.title}</span>
-        <span class="task-issued">Issued by: ${task.issued}</span>
-        <span class="task-date">Date: ${task.deadline.slice(0, 10)}</span>
-        <span class="task-time">Time: ${task.deadline.slice(11, 16)}</span>
+        <span class="task-issued">Organization: ${task.organization}</span>
+        <span class="task-date">Date: ${task.date}</span>
+        <span class="task-time">Time: ${task.time}</span>
     </div>
 
     <div class="buttons">
@@ -224,22 +216,14 @@ function addCardTask(task) {
   return card;
 }
 
-async function Task_addition_db(title, issued, location, salary, voluntary, description, deadline) {
+async function Task_addition_db(CreatedTask) {
     const BASE_URL = "https://css330-finalproject.onrender.com/tasks";
     
     try {
         const response = await fetch(BASE_URL, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                title,
-                issued,
-                location,
-                salary,
-                voluntary,
-                description,
-                deadline
-            })
+            body: JSON.stringify(CreatedTask)
         });
 
         if (!response.ok) {
