@@ -443,35 +443,25 @@ function renderUser(user) {
 }
 
 async function isAdmin() {
-    const backendUrl = "https://css330-finalproject.onrender.com/auth/user";
-    try {
-        const response = await fetch(backendUrl, {
-            credentials: 'include' 
-        });
 
-        if (response.status === 401) {
-            return;
-        }
-        if (response.ok) {
-            const data = await response.json();
-            
-            if (data.id === ADMIN_GOOGLE_ID_1 || data.id === ADMIN_GOOGLE_ID_2) { 
-                const navList = document.getElementById("navList");
-                if (!navList) return;
+    const user = await getCurrentUser(); 
 
-                const li = document.createElement("li");
-                li.innerHTML = `<a class="admin-link" href="/BetterBlock/admin.html">Administration</a>`;
-                navList.appendChild(li);
-            }
-        } 
-        else {
-            console.error("Failed to fetch user status:", response.status);
-        }
+    if (!user) {
+
+        return;
     }
-    catch (err) {
-        console.error('Network error checking admin status:', err);
+
+    if (user.google_id === ADMIN_GOOGLE_ID_1 || user.google_id === ADMIN_GOOGLE_ID_2) { 
+        const navList = document.getElementById("navList");
+        if (!navList) return;
+
+        const li = document.createElement("li");
+        li.innerHTML = `<a class="admin-link" href="/BetterBlock/admin.html">Administration</a>`;
+        navList.appendChild(li);
     }
-   
+    else {
+        return;
+    }
 }
 
 function selectAll() {
