@@ -215,8 +215,8 @@ function addCardTask(task) {
         document.querySelector("#voluntary").value = task.voluntary;
         document.querySelector("#age").value = task.age;
         document.querySelector("#description").value = task.description;
-        document.querySelector("#date").value = task.date;
-        document.querySelector("#time").value = task.time;
+        document.querySelector("#date").value = task.date.slice(0, 10);
+        document.querySelector("#time").value = task.time.slice(0, 5);
 
         document.querySelector("#adminForm").dataset.editingId = task.id;
     });
