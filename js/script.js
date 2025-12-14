@@ -1,8 +1,8 @@
 'use strict';
 
-const ADMIN_GOOGLE_ID = "1234567890abcdef";
+const ADMIN_GOOGLE_ID_1 = "111636469482706576725";
+const ADMIN_GOOGLE_ID_2 = "101847123791874334760";
 
-const currentGoogleId = "1234567890abcdef";
 
 async function fetchTasks() {
     const BASE_URL = "https://css330-finalproject.onrender.com/tasksinfo";
@@ -442,16 +442,37 @@ function renderUser(user) {
     `;
 }
 
-function isAdmin() {
-    if (currentGoogleId === ADMIN_GOOGLE_ID) {
-        const navList = document.getElementById("navList");
-        if (!navList) return;
+async function isAdmin() {
+    const backendUrl = "https://css330-finalproject.onrender.com/auth/user";
+    try {
+        const response = await fetch(backendUrl, {
+            credentials: 'include' 
+        });
 
-        const li = document.createElement("li");
-        li.innerHTML = `<a class="admin-link" href="/BetterBlock/admin.html">Administration</a>`;
-        navList.appendChild(li);
+        if (response.status === 401) {
+            return;
+        }
+        if (response.ok) {
+            const data = await response.json();
+            
+            if (data.id === ADMIN_GOOGLE_ID_1 || data.id === ADMIN_GOOGLE_ID_2) { 
+                const navList = document.getElementById("navList");
+                if (!navList) return;
+
+                const li = document.createElement("li");
+                li.innerHTML = `<a class="admin-link" href="/BetterBlock/admin.html">Administration</a>`;
+                navList.appendChild(li);
+            }
+        } 
+        else {
+            console.error("Failed to fetch user status:", response.status);
+        }
     }
-};
+    catch (err) {
+        console.error('Network error checking admin status:', err);
+    }
+   
+}
 
 function selectAll() {
     const checkboxes = document.querySelectorAll('#taskList input[type="checkbox"]');
