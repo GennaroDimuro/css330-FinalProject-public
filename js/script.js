@@ -175,7 +175,6 @@ async function addTask() {
     await renderTasks();
 
     form.reset();
-    document.getElementById("adminForm").reset();
     document.getElementById("dateForm").reset();
 }
 
@@ -192,7 +191,7 @@ function addCardTask(task) {
     </div>
 
     <div class="buttons">
-        <button type="button" class="button is-warning is-outlined" id="edit-task-btn">
+        <button type="button" class="button is-warning is-outlined edit-task-btn">
             <span>Edit</span>
             <span class="icon is-small">
                 <i class="fa-solid fa-pen"></i>
@@ -207,7 +206,7 @@ function addCardTask(task) {
     </div>
   `;
 
-    card.querySelector("#edit-task-btn").addEventListener("click", () => {
+    card.querySelector(".edit-task-btn").addEventListener("click", () => {
         document.querySelector("#title").value = task.title;
         document.querySelector("#organization").value = task.organization;
         document.querySelector("#location").value = task.location;
