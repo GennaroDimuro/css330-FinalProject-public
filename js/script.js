@@ -394,6 +394,53 @@ async function deleteUserApi(userId) {
     }
 }
 
+async function loadProfile() {
+    const user = await getCurrentUser();
+    if (!user) return;
+
+    renderUser(user);
+}
+
+async function getCurrentUser() {
+    const url = "https://css330-finalproject.onrender.com/auth/user";
+
+    try {
+        const res = await window.fetch(url, {
+            credentials: "include"
+        });
+
+        if (!res || !res.ok) return null;
+
+        const data = await res.json();
+        if (!data.authenticated) return null;
+
+        return data.user;
+
+    } catch (err) {
+        console.error("Error fetching current user:", err);
+        return null;
+    }
+}
+
+function renderUser(user) {
+    const container = document.getElementById("user-profile");
+    if (!container || !user) return;
+
+    container.innerHTML = `
+        <img src="${user.profile_pic}" alt="Foto de perfil" class="profile-img">
+        <h2 class="username">Welcome! ${user.name}</h2>
+        <p class="bio">${user.email}</p>
+        <p class="id-page">${user.google_id}</p>
+        <ul class="profile-options">
+            <li>
+                <button class="logout-btn" type="button" onclick="logoutofGoogle()">
+                    <i class="fa-solid fa-right-from-bracket"></i> 
+                    <span> Logout </span>
+                </button>
+            </li>
+        </ul>
+    `;
+}
 
 async function isAdmin() {
     const backendUrl = "https://css330-finalproject.onrender.com/auth/user";
@@ -469,13 +516,18 @@ function addTaskTest(task, assigned, priority, dueDate) {
     }
 
 function loginWithGoogle() {
-    const backendUrl = "https://css330-finalproject.onrender.com/auth/logout";
-
+    const backendUrl = "https://css330-finalproject.onrender.com/auth/login";
     window.location.href = backendUrl;
+}
+
+function logoutofGoogle() {
+    const backendUrl = "https://css330-finalproject.onrender.com/auth/logout"
+    window.location.href = backendUrl
 }
 
 
 window.onload = function() {
+    loadProfile();
     isAdmin();
     fetchUsers();
     renderTasks();
