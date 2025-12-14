@@ -80,6 +80,9 @@ function createJobCard(task) {
 }
 
 async function addTask() {
+    const form = document.getElementById("adminForm");
+    const editingId = form.dataset.editingId;
+
     let Tasktitle = document.querySelector("#title").value;
     let TaskOrganization = document.querySelector("#organization").value;
     let TaskLocation = document.querySelector("#location").value;
@@ -162,9 +165,16 @@ async function addTask() {
         time: TaskTime,
     };
 
-    await Task_addition_db(CreatedTask);
+    if (editingId) {
+        await updateTaskApi(editingId, CreatedTask);
+        delete form.dataset.editingId;
+    } else {
+        await Task_addition_db(CreatedTask);
+    }
+    
     await renderTasks();
 
+    form.reset();
     document.getElementById("adminForm").reset();
     document.getElementById("dateForm").reset();
 }
@@ -182,7 +192,7 @@ function addCardTask(task) {
     </div>
 
     <div class="buttons">
-        <button type="button" class="button is-warning is-outlined">
+        <button type="button" class="button is-warning is-outlined" id="edit-task-btn">
             <span>Edit</span>
             <span class="icon is-small">
                 <i class="fa-solid fa-pen"></i>
@@ -196,6 +206,19 @@ function addCardTask(task) {
         </button>
     </div>
   `;
+
+    card.querySelector("#edit-task-btn").addEventListener("click", () => {
+        document.querySelector("#title").value = task.title;
+        document.querySelector("#organization").value = task.organization;
+        document.querySelector("#location").value = task.location;
+        document.querySelector("#voluntary").value = task.voluntary;
+        document.querySelector("#age").value = task.age;
+        document.querySelector("#description").value = task.description;
+        document.querySelector("#date").value = task.date;
+        document.querySelector("#time").value = task.time;
+
+        document.querySelector("#adminForm").dataset.editingId = task.id;
+    });
 
     card.querySelector(".delete-task-btn").addEventListener("click", () => {
         const taskIdToDelete = task.id;
@@ -231,6 +254,20 @@ async function Task_addition_db(CreatedTask) {
         }
     } catch (err) {
         console.error("Error adding task:", err);
+    }
+}
+
+async function updateTaskApi(taskId, CreatedTask) {
+    const BASE_URL = `https://css330-finalproject.onrender.com/tasks/${taskId}`;
+    try {
+        const response = await fetch(BASE_URL, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(CreatedTask)
+        });
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    } catch (err) {
+        console.error("Error updating task:", err);
     }
 }
 
