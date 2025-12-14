@@ -407,7 +407,12 @@ async function getCurrentUser() {
     try {
         const response = await fetch(url, {
             credentials: "include"
-        });
+        })
+        .then(r => {
+            console.log(r.status);
+            return r.json();
+        })
+        .then(console.log);
 
         if (!response.ok) return null;
 
@@ -454,7 +459,6 @@ function renderUser(user) {
         </ul>
     `;
 }
-
 
 function isAdmin() {
     if (currentGoogleId === ADMIN_GOOGLE_ID) {
