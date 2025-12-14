@@ -393,7 +393,7 @@ header.navigation .nav-links ul li a.admin-link:hover {
     margin-bottom: 5px;
 }
 
-.input, .textarea, .select, .file-input {
+.input, .textarea {
     width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
