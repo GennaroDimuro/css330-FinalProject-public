@@ -178,7 +178,7 @@ function addCardTask(task) {
         <span class="task-title">Task: ${task.title}</span>
         <span class="task-issued">Organization: ${task.organization}</span>
         <span class="task-date">Date: ${task.date}</span>
-        <span class="task-time">Time: ${task.time}</span>
+        <span class="task-time">Time: ${task.time.slice(0, 5)}</span>
     </div>
 
     <div class="buttons">
