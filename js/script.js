@@ -3,7 +3,6 @@
 const ADMIN_GOOGLE_ID_1 = "111636469482706576725";
 const ADMIN_GOOGLE_ID_2 = "101847123791874334760"; 
 
-
 async function fetchTasks() {
     const BASE_URL = "https://css330-finalproject.onrender.com/tasksinfo";
 
@@ -330,6 +329,72 @@ async function deleteTaskApi(taskId) {
     }
 }
 
+async function RetrieveSignups() {
+    const user = await getCurrentUser();
+    if (!user) return;
+
+    const BASE_URL = `https://css330-finalproject.onrender.com/mytasks/${user.id}`;
+
+    try {
+        const res = await fetch(BASE_URL, {
+            credentials: "include"
+        });
+        if (!res.ok) return;
+
+        const data = await res.json();
+        const tasks = data.tasks || [];
+
+        tasks.forEach(task => {
+            addTaskToProfile(task);
+        });
+
+    } catch (err) {
+        console.error("Error fetching user tasks:", err);
+    }
+}
+
+function addTaskToProfile(task) {
+    const tbody = document.getElementById('taskList');
+    if (!tbody) return;
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+        <td><input type="checkbox"></td>
+        <td>${task.title}</td>
+        <td>${task.organization}</td>
+        <td>${task.voluntary || 'N/A'}</td>
+        <td>${task.age}</td>
+        <td>${task.date} ${task.time.slice(0,5)}</td>
+    `;
+    tbody.appendChild(tr);
+}
+
+function selectAll() {
+    const checkboxes = document.querySelectorAll('#taskList input[type="checkbox"]');
+    const icon = document.getElementById('checkMark');
+    const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+
+    checkboxes.forEach(cb => cb.checked = !allChecked);
+
+    if (allChecked) {
+        icon.classList.remove('fa-square-check');
+        icon.classList.add('fa-square');
+    } else {
+        icon.classList.remove('fa-square');
+        icon.classList.add('fa-square-check');
+    }
+}
+
+function deleteSelected() {
+    const rows = document.querySelectorAll('#taskList tr');
+    rows.forEach(row => {
+        const checkbox = row.querySelector('input[type="checkbox"]');
+        if (checkbox && checkbox.checked) {
+            row.remove();
+        }
+    });
+}
+
 async function fetchUsers() {
     const BASE_URL = "https://css330-finalproject.onrender.com/google";
     try {
@@ -500,47 +565,6 @@ async function isAdmin() {
     }
 }
 
-function selectAll() {
-    const checkboxes = document.querySelectorAll('#taskList input[type="checkbox"]');
-    const icon = document.getElementById('checkMark');
-    const allChecked = Array.from(checkboxes).every(cb => cb.checked);
-
-    checkboxes.forEach(cb => cb.checked = !allChecked);
-
-    if (allChecked) {
-        icon.classList.remove('fa-square-check');
-        icon.classList.add('fa-square');
-    } else {
-        icon.classList.remove('fa-square');
-        icon.classList.add('fa-square-check');
-    }
-}
-
-function deleteSelected() {
-    const rows = document.querySelectorAll('#taskList tr');
-    rows.forEach(row => {
-        const checkbox = row.querySelector('input[type="checkbox"]');
-        if (checkbox && checkbox.checked) {
-            row.remove();
-        }
-    });
-}
-
-function addTaskTest(task, assigned, priority, dueDate) {
-        const tbody = document.getElementById('taskList');
-        if (!tbody) return;
-        const tr = document.createElement('tr');
-
-        tr.innerHTML = `
-            <td><input type="checkbox"></td>
-            <td>${task}</td>
-            <td>${assigned}</td>
-            <td>${priority}</td>
-            <td>${dueDate}</td>
-        `;
-        tbody.appendChild(tr);
-    }
-
 function loginWithGoogle() {
     const backendUrl = "https://css330-finalproject.onrender.com/auth/login";
     window.location.href = backendUrl;
@@ -557,8 +581,5 @@ window.onload = function() {
     isAdmin();
     fetchUsers();
     renderTasks();
-
-    addTaskTest('Develop API', 'TechCorp', 'Low', '2025-12-15');
-    addTaskTest('Design UI', 'Designify', 'Medium', '2025-12-20');
-
+    RetrieveSignups();
 };
