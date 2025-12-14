@@ -394,6 +394,67 @@ async function deleteUserApi(userId) {
     }
 }
 
+async function loadProfile() {
+    const user = await getCurrentUser();
+    if (!user) return;
+
+    renderUser(user);
+}
+
+async function getCurrentUser() {
+    const url = "https://css330-finalproject.onrender.com/auth/user";
+
+    try {
+        const response = await fetch(url, {
+            credentials: "include"
+        });
+
+        if (!response.ok) return null;
+
+        const data = await response.json();
+        if (!data.authenticated) return null;
+
+        return data.user;
+
+    } catch (err) {
+        console.error("Error fetching current user:", err);
+        return null;
+    }
+}
+
+function renderUser(user) {
+    const container = document.getElementById("user-profile");
+    if (!container || !user) return;
+
+    container.innerHTML = `
+        <img src="${user.profile_pic}" alt="Foto de perfil" class="profile-img">
+        <h2 class="username">${user.name}</h2>
+        <p class="bio">${user.email}</p>
+        <ul class="profile-options">
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-pen"></i> Edit Profile
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i> Settings
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-lock"></i> Privacy
+                </a>
+            </li>
+            <li>
+                <a href="javascript:logout()">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </a>
+            </li>
+        </ul>
+    `;
+}
+
 
 function isAdmin() {
     if (currentGoogleId === ADMIN_GOOGLE_ID) {
@@ -455,6 +516,7 @@ function loginWithGoogle() {
 
 
 window.onload = function() {
+    loadProfile();
     isAdmin();
     fetchUsers();
     renderTasks();
