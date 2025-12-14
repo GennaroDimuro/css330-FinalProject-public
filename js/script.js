@@ -1,7 +1,7 @@
 'use strict';
 
 const ADMIN_GOOGLE_ID_1 = "111636469482706576725";
-const ADMIN_GOOGLE_ID_2 = "101847123791874334760";
+const ADMIN_GOOGLE_ID_2 = "101847123791874334760"; 
 
 
 async function fetchTasks() {
@@ -445,6 +445,7 @@ function renderUser(user) {
 async function isAdmin() {
 
     const user = await getCurrentUser(); 
+    console.log("Current user:", user);
 
     if (!user) {
 
