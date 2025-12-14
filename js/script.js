@@ -413,8 +413,11 @@ async function getCurrentUser() {
 
         const data = await res.json();
         if (!data.authenticated) return null;
-
+        
+        console.log("Fetched current user data:", data.user);
         return data.user;
+        
+        
 
     } catch (err) {
         console.error("Error fetching current user:", err);
@@ -445,8 +448,8 @@ function renderUser(user) {
 async function isAdmin() {
 
     const user = await getCurrentUser(); 
-    console.log("Current user:", user);
 
+    console.log("Current user:", user);
     if (!user) {
 
         return;
