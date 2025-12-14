@@ -165,13 +165,13 @@ async function addTask() {
         time: TaskTime,
     };
 
-    if (!editingId) {
-        await Task_addition_db(CreatedTask);
-        console.log("ADD MODE");
-    } else {
+    if (editingId) {
         await updateTaskApi(editingId, CreatedTask);
         delete form.dataset.editingId;
         console.log("EDIT MODE");
+    } else {
+        await Task_addition_db(CreatedTask);
+        console.log("ADD MODE");
     }
     
     await renderTasks();
@@ -242,16 +242,20 @@ function addCardTask(task) {
 
 async function Task_addition_db(CreatedTask) {
     const BASE_URL = "https://css330-finalproject.onrender.com/tasks";
-    const response = await fetch(BASE_URL, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(CreatedTask)
-    });
+    
+    try {
+        const response = await fetch(BASE_URL, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(CreatedTask)
+        });
 
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+    } catch (err) {
+        console.error("Error adding task:", err);
     }
-    return await response.json();
 }
 
 async function updateTaskApi(taskId, CreatedTask) {
