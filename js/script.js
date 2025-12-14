@@ -509,11 +509,13 @@ function addTaskTest(task, assigned, priority, dueDate) {
 
 function loginWithGoogle() {
     const backendUrl = "https://css330-finalproject.onrender.com/auth/login";
-
     window.location.href = backendUrl;
 }
 
-
+function logoutofGoogle() {
+    const backendUrl = "https://css330-finalproject.onrender.com/auth/logout"
+    window.location.href = backendUrl
+}
 
 
 window.onload = function() {
