@@ -475,25 +475,25 @@ function renderUser(user) {
 }
 
 async function isAdmin() {
-
-    const user = await getCurrentUser(); 
+    const user = await getCurrentUser();
     console.log("Current user:", user);
 
-    if (!user) {
+    if (!user) return;
 
-        return;
-    }
-
-    if (user.google_id === ADMIN_GOOGLE_ID_1 || user.google_id === ADMIN_GOOGLE_ID_2) { 
+    if (
+        user.google_id === ADMIN_GOOGLE_ID_1 ||
+        user.google_id === ADMIN_GOOGLE_ID_2
+    ) {
         const navList = document.getElementById("navList");
         if (!navList) return;
 
         const li = document.createElement("li");
-        li.innerHTML = `<a class="admin-link" href="/BetterBlock/admin.html">Administration</a>`;
+        li.innerHTML = `
+            <a class="admin-link" href="/BetterBlock/admin.html">
+                Administration
+            </a>
+        `;
         navList.appendChild(li);
-    }
-    else {
-        return;
     }
 }
 
