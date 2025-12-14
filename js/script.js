@@ -453,6 +453,7 @@ function loginWithGoogle() {
     window.location.href = backendUrl;
 }
 
+
 window.onload = function() {
     isAdmin();
     fetchUsers();
