@@ -98,14 +98,16 @@ async function addTask() {
     let Taskdeadline = TaskDate + " " + TaskTime;
 
     let alertT = document.querySelector("#alertEmptyTask");
-    let alertI = document.querySelector("#alertEmptyIssuedBy");
-    let alertV = document.querySelector("#alertEmptyVoluntary");
+    let alertO = document.querySelector("#alertEmptyOrganization");
+    let alertL = document.querySelector("#alertEmptyLocation");
+    let alertA = document.querySelector("#alertEmptyAge");
     let alertD = document.querySelector("#alertEmptyDate");
     let alertTi = document.querySelector("#alertEmptyTime");
 
     alertT.style.display = "none";
-    alertI.style.display = "none";
-    alertV.style.display = "none";
+    alertO.style.display = "none";
+    alertL.style.display = "none";
+    alertA.style.display = "none";
     alertD.style.display = "none";
     alertTi.style.display = "none";
 
@@ -170,6 +172,7 @@ async function addTask() {
 
     await renderTasks();
 
+    form.reset();
     document.getElementById("adminForm").reset();
     document.getElementById("dateForm").reset();
 }
@@ -187,13 +190,13 @@ function addCardTask(task) {
     </div>
 
     <div class="buttons">
-        <button type="submit" class="button is-warning is-outlined">
+        <button type="button" class="button is-warning is-outlined">
             <span>Edit</span>
             <span class="icon is-small">
                 <i class="fa-solid fa-pen"></i>
             </span>
         </button>
-        <button type="submit" class="delete-task-btn">
+        <button type="button" class="delete-task-btn">
             <span>Delete</span>
             <span class="icon is-small">
                 <i class="fas fa-times"></i>

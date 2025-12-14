@@ -401,11 +401,6 @@ header.navigation .nav-links ul li a.admin-link:hover {
     color: #333;
 }
 
-.price-field {
-    display: flex;
-    gap: 10px;
-}
-
 .admin-footer {
     margin-top: 15px;
     text-align: left;
@@ -465,8 +460,8 @@ header.navigation .nav-links ul li a.admin-link:hover {
     text-align: left;
 }
 
-#alertEmptyTask, #alertEmptyIssuedBy, 
-#alertEmptyVoluntary, #alertEmptyDate, #alertEmptyTime {
+#alertEmptyTask, #alertEmptyOrganization, #alertEmptyLocation, 
+#alertEmptyAge, #alertEmptyDate, #alertEmptyTime {
   display: none;
   font-size: 0.9em;
 }

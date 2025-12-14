@@ -32,32 +32,38 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Issued by</label>
-                                        <input id="issuedby" class="input" type="text" name="issued_by_admin" placeholder="Issued by">
-                                        <p id="alertEmptyIssuedBy">Issued by field is required</p>
+                                        <label>Organization</label>
+                                        <input id="organization" class="input" type="text" name="organization_admin" placeholder="Organization">
+                                        <p id="alertEmptyOrganization">Organization field is required</p>
                                     </div>
 
                                     <div class="form-group">
                                         <label>Location</label>
                                         <input id="location" class="input" type="text" name="location_admin" placeholder="Location">
+                                        <p id="alertEmptyLocation">Location field is required</p>
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Salary</label>
-                                        <div class="price-field">
-                                            <select id="salary" name="currency_admin" class="select">
-                                                <option>$</option>
-                                                <option>£</option>
-                                                <option>€</option>
-                                            </select>
-                                            <input id="amount" class="input" type="text" name="price_admin" placeholder="Amount">
-                                        </div>
+                                        <label>Features</label>
+                                        <select id="voluntary" name="voluntary_admin" class="select">
+                                            <option>In-person</option>
+                                            <option>Virtual</option>
+                                            <option>Temporary</option>
+                                            <option>Ongoing</option>
+                                            <option>Project-based</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Voluntary</label>
-                                        <input id="voluntary" class="input" type="text" name="voluntary_admin" placeholder="yes/no">
-                                        <p id="alertEmptyVoluntary">Voluntary field is required</p>
+                                        <label>Age group</label>
+                                        <select id="age" name="age_admin" class="select">
+                                            <option>All ages</option>
+                                            <option>Children</option>
+                                            <option>Teens</option>
+                                            <option>Adults</option>
+                                            <option>Seniors</option>
+                                        </select>
+                                        <p id="alertEmptyAge">Age group field is required</p>
                                     </div>
 
                                     <div class="form-group">
