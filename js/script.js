@@ -71,7 +71,7 @@ function createJobCard(task) {
         </div>
         <div class="job-footer">
             <p id="counter" class="counter-msg">counter: 0</p>
-            <button class="apply-btn">Register</button>
+            <button type="button" class="apply-btn" onclick="registerTask">Register</button>
         </div>
     `;
 
@@ -429,8 +429,8 @@ function renderUser(user) {
     container.innerHTML = `
         <img src="${user.profile_pic}" alt="Foto de perfil" class="profile-img">
         <h2 class="username">Welcome! ${user.name}</h2>
-        <p class="bio">${user.email}</p>
-        <p class="id-page">${user.google_id}</p>
+        <p class="bio">E-mail: ${user.email}</p>
+        <p class="id-page">ID: ${user.google_id}</p>
         <ul class="profile-options">
             <li>
                 <button class="logout-btn" type="button" onclick="logoutofGoogle()">
