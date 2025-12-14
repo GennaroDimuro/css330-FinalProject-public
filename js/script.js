@@ -70,16 +70,48 @@ function createJobCard(task) {
             <p><strong>Description:</strong> ${task.description}</p>
         </div>
         <div class="job-footer">
-            <p id="counter" class="counter-msg">counter: 0</p>
-            <button type="button" class="apply-btn" onclick="registerTask">Register</button>
+            <p class="counter-msg">Registered: ${task.users ? task.users.length : 0}</p>
+            <button type="button" class="apply-btn">Register</button>
         </div>
     `;
 
     card.querySelector(".apply-btn").addEventListener("click", () => {
-        alert(`You registered for the job: ${task.title}`);
+        const TasktoRegister = task.id; 
+        const counterElement = card.querySelector(".counter-msg")
+        const button = card.querySelector(".apply-btn");
+        registerTask(TasktoRegister, counterElement, button)
     });
 
     return card;
+}
+
+async function registerTask(task_id, counter, button) {
+    try {
+        const response = await fetch(
+            `https://css330-finalproject.onrender.com/tasks/${task_id}/register`,
+            {
+                method: "POST",
+                credentials: "include"
+            }
+        );
+
+        if (!response.ok) {
+            if (response.status === 401) {
+                alert("You must be logged in to register.");
+            }
+            return;
+        }
+
+        const data = await response.json();
+
+        counter.textContent = `Registered: ${data.count}`;
+
+        button.disabled = true;
+        button.textContent = data.registered ? "Registered" : "Already registered";
+
+    } catch (err) {
+        console.error("Error registering task:", err);
+    }
 }
 
 async function addTask() {
