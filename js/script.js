@@ -168,8 +168,10 @@ async function addTask() {
     if (editingId) {
         await updateTaskApi(editingId, CreatedTask);
         delete form.dataset.editingId;
+        console.log("EDIT MODE");
     } else {
         await Task_addition_db(CreatedTask);
+        console.log("ADD MODE");
     }
     
     await renderTasks();
