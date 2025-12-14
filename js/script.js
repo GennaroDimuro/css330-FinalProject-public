@@ -262,7 +262,7 @@ async function updateTaskApi(taskId, CreatedTask) {
     const BASE_URL = `https://css330-finalproject.onrender.com/tasks/${taskId}`;
     try {
         const response = await fetch(BASE_URL, {
-            method: "PUT",
+            method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(CreatedTask)
         });
