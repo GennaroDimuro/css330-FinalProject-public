@@ -204,8 +204,15 @@ header.navigation .nav-links ul li a.admin-link:hover {
 }
 
 .job-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: 15px;
-    text-align: right;
+}
+
+.counter-msg {
+    font-size: 0.8em;
+    color: #555;
 }
 
 .apply-btn {

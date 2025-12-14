@@ -64,10 +64,13 @@ function createJobCard(task) {
         </div>
         <div class="job-body">
             <p><strong>Location:</strong> ${task.location}</p>
-            <p><strong>Date:</strong> ${task.date}</p>
+            <p><strong>Voluntary:</strong> ${task.voluntary}</p>
+            <p><strong>Age Requirement:</strong> ${task.age}</p>
+            <p><strong>Date:</strong> ${task.date} ${task.time}</p>
             <p><strong>Description:</strong> ${task.description}</p>
         </div>
         <div class="job-footer">
+            <p id="counter" class="counter-msg">counter: 0</p>
             <button class="apply-btn">Register</button>
         </div>
     `;
