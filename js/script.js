@@ -447,9 +447,9 @@ function renderUser(user) {
                 </a>
             </li>
             <li>
-                <a href="javascript:logout()">
+                <button class="logout-btn" type="button" onclick="logoutofGoogle()">
                     <i class="fa-solid fa-right-from-bracket"></i> Logout
-                </a>
+                </button>
             </li>
         </ul>
     `;
@@ -508,10 +508,12 @@ function addTaskTest(task, assigned, priority, dueDate) {
     }
 
 function loginWithGoogle() {
-    const backendUrl = "https://css330-finalproject.onrender.com/auth/logout";
+    const backendUrl = "https://css330-finalproject.onrender.com/auth/login";
 
     window.location.href = backendUrl;
 }
+
+
 
 
 window.onload = function() {
