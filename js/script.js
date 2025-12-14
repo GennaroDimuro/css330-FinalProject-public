@@ -428,27 +428,14 @@ function renderUser(user) {
 
     container.innerHTML = `
         <img src="${user.profile_pic}" alt="Foto de perfil" class="profile-img">
-        <h2 class="username">${user.name}</h2>
+        <h2 class="username">Welcome! ${user.name}</h2>
         <p class="bio">${user.email}</p>
+        <p class="id-page">${user.google_id}</p>
         <ul class="profile-options">
             <li>
-                <a href="#">
-                    <i class="fa-solid fa-pen"></i> Edit Profile
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-gear"></i> Settings
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-lock"></i> Privacy
-                </a>
-            </li>
-            <li>
                 <button class="logout-btn" type="button" onclick="logoutofGoogle()">
-                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                    <i class="fa-solid fa-right-from-bracket"></i> 
+                    <span> Logout </span>
                 </button>
             </li>
         </ul>
