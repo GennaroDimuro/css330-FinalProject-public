@@ -405,18 +405,13 @@ async function getCurrentUser() {
     const url = "https://css330-finalproject.onrender.com/auth/user";
 
     try {
-        const response = await fetch(url, {
+        const res = await window.fetch(url, {
             credentials: "include"
-        })
-        .then(r => {
-            console.log(r.status);
-            return r.json();
-        })
-        .then(console.log);
+        });
 
-        if (!response.ok) return null;
+        if (!res || !res.ok) return null;
 
-        const data = await response.json();
+        const data = await res.json();
         if (!data.authenticated) return null;
 
         return data.user;
