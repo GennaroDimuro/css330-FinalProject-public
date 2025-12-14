@@ -66,7 +66,7 @@ function createJobCard(task) {
             <p><strong>Location:</strong> ${task.location}</p>
             <p><strong>Voluntary:</strong> ${task.voluntary}</p>
             <p><strong>Age Requirement:</strong> ${task.age}</p>
-            <p><strong>Date:</strong> ${task.date} ${task.time}</p>
+            <p><strong>Date:</strong> ${task.date} ${task.time.slice(0, 5)}</p>
             <p><strong>Description:</strong> ${task.description}</p>
         </div>
         <div class="job-footer">
