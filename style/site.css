@@ -558,7 +558,6 @@ header.navigation .nav-links ul li a.admin-link:hover {
 }
 
 .task-users {
-    gap: 6px;
     font-size: 0.95rem;
     color: #555;
 }
