@@ -362,10 +362,10 @@ function addTaskToProfile(task) {
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
-        <td><i class="fa-solid fa-trash"></i></td>
+        <td><span class="trash-btn"><i class="fa-solid fa-trash"></i></span></td>
         <td>${task.title}</td>
         <td>${task.organization}</td>
-        <td>${task.voluntary || 'N/A'}</td>
+        <td>${task.voluntary}</td>
         <td>${task.age}</td>
         <td>${task.date} ${task.time.slice(0,5)}</td>
     `;

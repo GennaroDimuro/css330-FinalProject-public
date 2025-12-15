@@ -283,24 +283,14 @@ header.navigation .nav-links ul li a.admin-link:hover {
     font-weight: bold;
 }
 
-.delete-btn {
-    align-items: center;
-    gap: 6px;
-    padding: 10px 12px;
-
-    font-size: 1em;
-    border-radius: 5px;
-    background: #fff;
-    cursor: pointer;
+.trash-btn {
+    color: rgb(182, 27, 27);
+    transition: transform 0.15s ease, color 0.15s ease;
 }
 
-.delete-btn {
-    border: 1px solid #f1b0b7;
-    color: #8a1f1f;
-}
-
-.delete-btn:hover {
-    background: #fdeaea;
+.trash-btn:hover {
+    color: rgb(221, 39, 39);
+    transform: scale(1.15);
 }
 
 .right {
