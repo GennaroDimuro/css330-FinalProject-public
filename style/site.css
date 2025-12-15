@@ -581,7 +581,7 @@ header.navigation .nav-links ul li a.admin-link:hover {
     gap: 6px;
     padding: 10px 12px;
 
-    font-size: 1.2em;
+    font-size: 1em;
     border-radius: 5px;
     background: #fff;
     cursor: pointer;
