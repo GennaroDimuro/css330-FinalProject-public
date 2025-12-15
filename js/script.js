@@ -237,7 +237,7 @@ function addCardTask(task) {
         <span class="task-age">Age: ${task.age}
         <span class="task-users">
             Members:
-            <select class="members-select">
+            <select>
                 ${member}
             </select>
         </span>

@@ -558,11 +558,9 @@ header.navigation .nav-links ul li a.admin-link:hover {
 }
 
 .task-users {
-    display: flex;
-    align-items: center;
     gap: 6px;
     font-size: 0.95rem;
-    color: #333;
+    color: #555;
 }
 
 .task-users select {
