@@ -283,7 +283,7 @@ header.navigation .nav-links ul li a.admin-link:hover {
     font-weight: bold;
 }
 
-.delete-task-btn {
+.delete-btn {
     align-items: center;
     gap: 6px;
     padding: 10px 12px;
