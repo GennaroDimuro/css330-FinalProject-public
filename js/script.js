@@ -94,12 +94,7 @@ async function registerTask(task_id, counter, button) {
             }
         );
 
-        if (!response.ok) {
-            if (response.status === 401) {
-                alert("You must be logged in to register.");
-            }
-            return;
-        }
+        if (!response.ok) return;
 
         const data = await response.json();
 
@@ -337,15 +332,12 @@ async function deleteTaskApi(taskId) {
             credentials: 'include'
         });
 
-        if (response.ok) {
-            alert(`Task ${taskId} deleted successfully from database.`);
-        } else {
+        if (!response.ok) {
             const errorData = await response.json();
-            alert(`Failed to delete task: ${errorData.error}`);
+            console.error("Failed to delete task:", errorData.error);
         }
     } catch (err) {
         console.error('Error deleting task:', err);
-        alert('A network error occurred.');
     }
 }
 
@@ -403,15 +395,12 @@ async function deleteRowTable(task_id) {
             credentials: 'include'
         });
 
-        if (response.ok) {
-            alert(`Row ${task_id} deleted successfully from database.`);
-        } else {
+        if (!response.ok) {
             const errorData = await response.json();
-            alert(`Failed to delete row: ${errorData.error}`);
+            console.error("Failed to delete row:", errorData.error);
         }
     } catch (err) {
         console.error('Error deleting row:', err);
-        alert('A network error occurred.');
     }
 }
 
@@ -525,15 +514,12 @@ async function deleteUserApi(userId) {
             credentials: 'include'
         });
 
-        if (response.ok) {
-            alert(`User ${userId} deleted successfully from database.`);
-        } else {
+        if (!response.ok) {
             const errorData = await response.json();
-            alert(`Failed to delete user: ${errorData.error}`);
+            console.error("Failed to delete user:", errorData.error);
         }
     } catch (err) {
         console.error('Error deleting user:', err);
-        alert('A network error occurred.');
     }
 }
 
