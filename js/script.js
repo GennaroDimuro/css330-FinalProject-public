@@ -330,10 +330,7 @@ async function deleteTaskApi(taskId) {
 }
 
 async function RetrieveSignups() {
-    const user = await getCurrentUser();
-    if (!user) return;
-
-    const BASE_URL = `https://css330-finalproject.onrender.com/mytasks/${user.id}`;
+    const BASE_URL = `https://css330-finalproject.onrender.com/my_jobs`;
 
     try {
         const res = await fetch(BASE_URL, {
