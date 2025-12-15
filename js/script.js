@@ -222,10 +222,12 @@ function addCardTask(task) {
 
   card.innerHTML = `
     <div class="task-info">
+        <span class="task-id">ID: ${task.id}</span>
         <span class="task-title">Task: ${task.title}</span>
         <span class="task-issued">Organization: ${task.organization}</span>
-        <span class="task-date">Date: ${task.date}</span>
-        <span class="task-time">Time: ${task.time.slice(0, 5)}</span>
+        <span class="task-voluntary">Voluntary: ${task.voluntary}</span>
+        <span class="task-age">Age: ${task.age}
+        <span class="task-date">Date: ${task.date} ${task.time.slice(0, 5)}</span>
     </div>
 
     <div class="buttons">

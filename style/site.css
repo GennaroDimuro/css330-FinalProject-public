@@ -554,23 +554,17 @@ header.navigation .nav-links ul li a.admin-link:hover {
   align-items: center; 
 }
 
-.task-title {
+.task-id {
   font-weight: 500;
   color: #162938;
 }
 
-.task-issued {
+.task-issued, .task-voluntary,
+.task-age, .task-title {
   color: #555;
 }
 
-.task-members select {
-  padding: 4px 8px;
-  border: 1px solid #ddd;
-  font-size: 0.9em;
-  color: #555;
-}
-
-.task-date, .task-time {
+.task-date {
     padding: 4px 8px;
     font-size: 0.9em;
     color: #555;
