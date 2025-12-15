@@ -362,7 +362,7 @@ function addTaskToProfile(task) {
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
-        <td><input type="checkbox"></td>
+        <td><i class="fa-solid fa-trash"></i></td>
         <td>${task.title}</td>
         <td>${task.organization}</td>
         <td>${task.voluntary || 'N/A'}</td>
