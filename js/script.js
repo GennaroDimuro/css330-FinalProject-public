@@ -607,6 +607,10 @@ function logoutofGoogle() {
     window.location.href = backendUrl
 }
 
+function sendMail() {
+    const email = "HelpDecorah@gmail.com";
+    window.location.href = `mailto:${email}`;
+}
 
 window.onload = function() {
     loadProfile();
