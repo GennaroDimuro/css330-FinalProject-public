@@ -604,7 +604,7 @@ function logoutofGoogle() {
 }
 
 function sendMail() {
-    const email = "HelpDecorah.com";
+    const email = "HelpDecorah@gmail.com";
     window.location.href = `mailto:${email}`;
 }
 
