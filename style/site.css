@@ -583,18 +583,26 @@ header.navigation .nav-links ul li a.admin-link:hover {
 
     font-size: 14px;
     border-radius: 5px;
-    border: 1px solid #dcdcdc;
     background: #fff;
     cursor: pointer;
 }
 
-.edit-task-btn:hover,
-.delete-task-btn:hover {
-    background: #f5f5f5;
+.edit-task-btn {
+    border: 1px solid #cfd8dc;
+    color: #37474f;
+}
+
+.edit-task-btn:hover {
+    background: #eef3f6;
 }
 
 .delete-task-btn {
-    border-color: #e3c2c2;
+    border: 1px solid #f1b0b7;
+    color: #8a1f1f;
+}
+
+.delete-task-btn:hover {
+    background: #fdeaea;
 }
 
 /* Users Management Page */
