@@ -540,13 +540,8 @@ header.navigation .nav-links ul li a.admin-link:hover {
 }
 
 .task-info {
-  font-size: 0.95em;
-  color: #333;
-}
-
-.task-info {
   display: flex;
-  gap: 20px;  
+  gap: 10px;  
   font-size: 0.95em;
   color: #333;
   align-items: center; 
@@ -560,6 +555,21 @@ header.navigation .nav-links ul li a.admin-link:hover {
 .task-issued, .task-voluntary,
 .task-age, .task-title {
   color: #555;
+}
+
+.task-users {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.task-users select {
+    padding: 4px 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .task-date {
