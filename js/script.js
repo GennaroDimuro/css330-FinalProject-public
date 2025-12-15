@@ -220,6 +220,14 @@ function addCardTask(task) {
   const card = document.createElement("div");
   card.className = "task-card";
 
+   const member = task.users && task.users.length > 0
+    ? task.users.map(user => `
+        <option value="${user.email}">
+          ${user.name}
+        </option>
+      `).join("")
+    : `<option disabled>No members</option>`;
+
   card.innerHTML = `
     <div class="task-info">
         <span class="task-id">ID: ${task.id}</span>
@@ -227,6 +235,12 @@ function addCardTask(task) {
         <span class="task-issued">Organization: ${task.organization}</span>
         <span class="task-voluntary">Voluntary: ${task.voluntary}</span>
         <span class="task-age">Age: ${task.age}
+        <span class="task-users">
+            Members:
+            <select class="members-select">
+                ${member}
+            </select>
+        </span>
         <span class="task-date">Date: ${task.date} ${task.time.slice(0, 5)}</span>
     </div>
 
@@ -608,7 +622,7 @@ function logoutofGoogle() {
 }
 
 function sendMail() {
-    const email = "HelpDecorah@gmail.com";
+    const email = "HelpDecorah.com";
     window.location.href = `mailto:${email}`;
 }
 
