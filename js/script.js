@@ -231,7 +231,7 @@ function addCardTask(task) {
     </div>
 
     <div class="buttons">
-        <button type="button" class="button is-warning is-outlined edit-task-btn">
+        <button type="button" class="edit-task-btn">
             <span>Edit</span>
             <span class="icon is-small">
                 <i class="fa-solid fa-pen"></i>
