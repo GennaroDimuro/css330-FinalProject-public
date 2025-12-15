@@ -284,7 +284,8 @@ header.navigation .nav-links ul li a.admin-link:hover {
 }
 
 .trash-btn {
-    color: rgb(182, 27, 27);
+    cursor: pointer;
+    color: rgb(32, 32, 32);
     transition: transform 0.15s ease, color 0.15s ease;
 }
 

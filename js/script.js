@@ -369,7 +369,36 @@ function addTaskToProfile(task) {
         <td>${task.age}</td>
         <td>${task.date} ${task.time.slice(0,5)}</td>
     `;
+
+    tr.querySelector(".trash-btn").addEventListener("click", () => {
+        const RowDelete = task.id;
+        deleteRowTable(RowDelete);
+        if (tr) {
+            tr.remove();
+        }
+    });
+
     tbody.appendChild(tr);
+}
+
+async function deleteRowTable(task_id) {
+    const BASE_URL = `https://css330-finalproject.onrender.com/remove_job_for_user/${task_id}`;
+    try {
+        const response = await fetch(BASE_URL, {
+            method: 'DELETE',
+            credentials: 'include'
+        });
+
+        if (response.ok) {
+            alert(`Row ${task_id} deleted successfully from database.`);
+        } else {
+            const errorData = await response.json();
+            alert(`Failed to delete row: ${errorData.error}`);
+        }
+    } catch (err) {
+        console.error('Error deleting row:', err);
+        alert('A network error occurred.');
+    }
 }
 
 function selectAll() {
