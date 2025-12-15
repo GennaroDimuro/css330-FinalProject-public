@@ -210,6 +210,10 @@ async function addTask() {
 
     form.reset();
     document.getElementById("dateForm").reset();
+    const submitBtn = document.querySelector("#submit-task-btn");
+    if (submitBtn) {
+        submitBtn.textContent = "Create";
+    }
 }
 
 function addCardTask(task) {
